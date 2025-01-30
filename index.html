@@ -3,50 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Code & Logo Generator</title>
+  <title>CodeCraft & LogoLab</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
+    :root {
+      --code-color: #4F46E5;
+      --logo-color: #EC4899;
+      --bg-gradient: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #F9FAFB;
-      color: #1F2937;
+      background: var(--bg-gradient);
+      color: white;
+      min-height: 100vh;
+    }
+
+    .hero {
+      padding: 8rem 2rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(79,70,229,0.1) 0%, transparent 70%);
+      animation: pulse 8s infinite;
     }
 
     h1 {
-      color: #2563EB;
-      font-size: 2.5rem;
-      margin-top: 100px;
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      background: linear-gradient(90deg, var(--code-color), var(--logo-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    p {
+    .cta-container {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+
+    .cta-btn {
+      padding: 1.5rem 3rem;
+      border-radius: 15px;
       font-size: 1.2rem;
-      margin-bottom: 40px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #2563EB;
-      color: #FFFFFF;
-      border-radius: 5px;
-      margin: 0 10px;
-      text-decoration: none;
-      transition: background-color 0.3s;
+    .cta-btn.code-btn:hover {
+      border-color: var(--code-color);
+      box-shadow: 0 0 25px rgba(79,70,229,0.3);
     }
 
-    .btn:hover {
-      background-color: #1E40AF;
+    .cta-btn.logo-btn:hover {
+      border-color: var(--logo-color);
+      box-shadow: 0 0 25px rgba(236,72,153,0.3);
+    }
+
+    @keyframes pulse {
+      0% { transform: translate(0,0); }
+      50% { transform: translate(50px,50px); }
+      100% { transform: translate(0,0); }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      .cta-container { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <h1>Generate Code & Design Logos Effortlessly</h1>
-  <p>Create clean code for websites and design professional logos with our powerful tools.</p>
-  <div>
-    <a href="code-generator.html" class="btn">Code Generator</a>
-    <a href="logo-generator.html" class="btn">Logo Generator</a>
-  </div>
+  <section class="hero">
+    <h1>Build & Brand</h1>
+    <p class="tagline">From Code to Corporate Identity</p>
+    <div class="cta-container">
+      <a href="code-generator.html" class="cta-btn code-btn">
+        <i class="fas fa-code"></i> CodeCraft Studio
+      </a>
+      <a href="logo-generator.html" class="cta-btn logo-btn">
+        <i class="fas fa-copyright"></i> LogoLab AI
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // Animate tagline
+    document.querySelector('.tagline').animate([
+      { opacity: 0, transform: 'translateY(20px)' },
+      { opacity: 1, transform: 'translateY(0)' }
+    ], {
+      duration: 1000,
+      delay: 500,
+      fill: 'forwards'
+    });
+  </script>
 </body>
 </html>
